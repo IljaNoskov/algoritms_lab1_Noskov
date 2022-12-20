@@ -111,6 +111,39 @@ def exp_matrix_s(matrix,bar,string,num):
 # Результаты.
 ### Сравнение трёх алгоритмов на одинаковых данных.
 #### Первая матрица.
-Обычная шкала.
+##### Обычная шкала.
+<img width="413" alt="image" src="https://user-images.githubusercontent.com/99073996/208665888-d7717e7d-9c39-4900-88c4-6c69d1c98c19.png">
 
-Логарифмическая шкала.
+##### Логарифмическая шкала.
+<img width="433" alt="image" src="https://user-images.githubusercontent.com/99073996/208665956-f299e8ca-ecd2-4d98-9028-4fae1572a750.png">
+
+#### Вторая матрица.
+##### Обычная шкала.
+<img width="433" alt="image" src="https://user-images.githubusercontent.com/99073996/208666759-0407e4d7-d471-4381-9dec-d0a0efe9f452.png">
+
+##### Логарифмическая шкала.
+<img width="447" alt="image" src="https://user-images.githubusercontent.com/99073996/208666815-f8336243-c186-4272-a307-d3e9a3ecfbd3.png">
+
+### Сравнение Алгоритмов на разных данных
+#### Бинарный поиск.
+##### Обычная шкала.
+<img width="439" alt="image" src="https://user-images.githubusercontent.com/99073996/208668663-24ac7b42-d41c-436c-a164-76bd3dc4288d.png">
+
+##### Логарифмическая шкала.
+<img width="440" alt="image" src="https://user-images.githubusercontent.com/99073996/208668704-3e85538e-a29d-4664-b18e-ecd81707c416.png">
+
+#### Лесенка.
+##### Обычная шкала.
+<img width="439" alt="image" src="https://user-images.githubusercontent.com/99073996/208668910-35f76e15-5d28-4caa-af0c-80847a8d30b0.png">
+
+##### Логарифмическая шкала.
+<img width="444" alt="image" src="https://user-images.githubusercontent.com/99073996/208668959-ae83dae2-3720-4a8f-a2a2-0cd0792793bb.png">
+
+
+#### Экспоненциальная лесенка.
+##### Обычная шкала.
+<img width="439" alt="image" src="https://user-images.githubusercontent.com/99073996/208669033-0db22c39-88dc-4666-a2f1-416a6ba822e5.png">
+
+##### Логарифмическая шкала.
+<img width="440" alt="image" src="https://user-images.githubusercontent.com/99073996/208669065-caa0c143-fcf0-4aa5-b797-3b34c527ae5d.png">
+
