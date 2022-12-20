@@ -74,3 +74,36 @@ def find_lest(matrix,bar_n,string_n,num):
             return(i,j,"- Индексы нашего элемента")
     return("Элемента в матрице нет")
 ```
+### Экспоненциальный поиск "Лесенкой"
+#### Оценка времени работы O(log(N)+log(M))
+Экспоненциальный поиск в массиве. Двинаем размеры диапазона согласно экспоненциальному. Как нашли диапазон, ищем в нём уже бинарным.
+```python
+def exp_search(arr,start,end,num,exp=1):
+    s_end=min(start+2**exp,end)
+    #print(start,s_end,num,arr[s_end])
+    if arr[s_end]>=num or s_end==end:
+        return bin_search(arr,start,s_end,num)
+    else:
+        #print(exp+1)
+        return exp_search(arr,s_end,end,num,exp+1)
+```
+
+Начинаем поиск из верхнего правого угла, в зависимости от сравнения текущего элемента начинаем поиск либо вниз (если нужен элемент больше), либо влево (если нужен элемент меньше).
+```python
+def exp_matrix_s(matrix,bar,string,num):
+    i=0
+    j,rez=exp_search(matrix[0],0,string,num)
+    #print(j,rez,num,matrix[i][j+1])
+    while (i<bar and j<string and j>=0 and rez==False):
+        if bar==2**13:
+            print(i,j)
+        if num>matrix[i][j]:
+            i,rez=exp_search_bar(matrix,i,num,j)
+        else:
+            j,rez=exp_search(matrix[i],0,j,num)
+        #print(i<bar,rez==False)
+    if rez==True:
+        return i,j
+    else:
+        return "В матрице нет такого элемента"
+```
