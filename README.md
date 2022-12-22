@@ -2,7 +2,7 @@
 ### Выполнил Носков Илья 21ПИ1.
 Все графики и таблицы, помимо скринов, будут доступны по ссылке [https://docs.google.com/spreadsheets/d/1kYcRv7BlsV4xKhjwWECqlUIWNOCdl0h3meINKqnm-dc/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1O7C6GYKZfmwLcnTAWSsHm-Yq3RG5AUnM2H3ZAyKF3UM/edit?usp=sharing)
 Также один из файлов является копией этой таблицы.
-Код запускал в IDLE, python 3.7.8.
+Код запускал в IDLE, python 3.10.
 # Коды алгоритмов.
 ### Генерация матриц.
 Генерация первой матрицы:
