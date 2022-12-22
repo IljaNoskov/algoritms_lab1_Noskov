@@ -63,7 +63,7 @@ def exp_s_matrix(matrix,bar_len,string_len,num):
     for i in range(1,bar_len):
         #print (i,rez[1])
         rez=exp_serch(matrix[i],0,rez[1]-1,num)
-        if rez[0]==1 or rez[1]==0:
+        if rez[0]==1 or (rez[1]==0 and matrix[i][0]>num):
             return i,rez[1]
 
 
