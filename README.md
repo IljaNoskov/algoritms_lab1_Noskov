@@ -79,45 +79,77 @@ def find_lest(matrix,bar_n,string_n,num):
 #### Оценка времени работы O(log(N)-log(M)+1)
 Экспоненциальный поиск в массиве. Двинаем размеры диапазона согласно экспоненциальному. Как нашли диапазон, ищем в нём уже бинарным.
 ```python
-def exp_search(arr,start,end,num,exp=1):
+def exp_serch(arr,start,end,num,exp=1):
     s_end=min(start+2**exp,end)
-    #print(start,s_end,num,arr[s_end])
-    if arr[s_end]>=num or s_end==end:
-        return bin_search(arr,start,s_end,num)
+    if arr[s_end]==num:
+        return [1,s_end]
+    elif arr[s_end]>num or s_end==end:
+        return bins(arr,start,s_end,num)
     else:
-        #print(exp+1)
-        return exp_search(arr,s_end,end,num,exp+1)
+        return exp_serch(arr,s_end,end,num,exp+1)
 ```
 
-Начинаем поиск из верхнего правого угла, в зависимости от сравнения текущего элемента начинаем поиск либо вниз (если нужен элемент больше), либо влево (если нужен элемент меньше).
+Экспоненциальный и бинарный поиски в столбик для матрицы. Раоботают аналогично поискам внутри массива, только второй индекс внутри поиска - константа. Ведь ищем только по одному столбику.
 ```python
-def exp_matrix_s(matrix,bar,string,num):
-    i=0
-    j,rez=exp_search(matrix[0],0,string,num)
-    #print(j,rez,num,matrix[i][j+1])
-    while (i<bar and j<string and j>=0 and rez==False):
-        if bar==2**13:
-            print(i,j)
-        if num>matrix[i][j]:
-            i,rez=exp_search_bar(matrix,i,num,j)
-        else:
-            j,rez=exp_search(matrix[i],0,j,num)
-        #print(i<bar,rez==False)
-    if rez==True:
-        return i,j
+def bins_bar(matrix,bar_ind,start,end,num):
+    mid=(start+end)//2
+    #print(mid)
+    if start>end:
+        return([-1,start])
+    if num==matrix[mid][bar_ind]:
+        return([1,mid])
+    elif num<matrix[mid][bar_ind]:
+        #print('ищу выше',num,matrix[mid][bar_ind])
+        return(bins_bar(matrix,bar_ind,start,mid-1,num))
     else:
-        return "В матрице нет такого элемента"
+        #print('ищу ниже')
+        return(bins_bar(matrix,bar_ind,mid+1,end,num))
+    
+def exp_search_bar(matrix,bar_ind,start,end,num,exp=0):
+    s_end=min(start+2**exp,end)
+    if matrix[s_end][bar_ind]==num:
+        return ([1,s_end])
+    if matrix[s_end][bar_ind]>num or s_end==end:
+        return bins_bar(matrix,bar_ind,start,s_end,num)
+    else:
+        return exp_search_bar(matrix,bar_ind,s_end,end,num,exp+1)
 ```
 
-# Результаты.
-Смотрите по ссылке на гугл диск
-https://docs.google.com/spreadsheets/d/178wBsA4Ej7er1Lw6KCcvod7N_EzcOONQ4hkRDZkI2FI/edit?usp=sharing
+Начинаем поиск с поиска строки, выше которой точно находиться наше число. А далее идём вверх до конца матрицы, или же до строки, последнее число которой менше нашего элемента. Ну или пока не найдём наш элемент.
+```python
+def exp_s_matrix(matrix,bar_len,string_len,num):
+    rez=exp_search_bar(matrix,0,0,bar_len,num)
+    #print(rez)
+    if rez[0]==1:
+        return 'Элемент найден',rez[1],0
+    for i in range(min(rez[1],bar_len),-1,-1):
+        #print(i)
+        if matrix[i][-1]<num:
+            #print(num,matrix[i][-1])
+            return -1
+        rez=exp_serch(matrix[i],0,string_len,num,)
+        #print(rez)
+        if rez[0]==1:
+            return 1,i,rez[1]
+```
 
-# Выводы
-1) Бинарный поиск ожидаемо самый медленный на квадратных данных, но самый быстрый на "узкой" матрице
-2) Лесенка показала странный результат, почти равный 0 на массиве. Видимо, таргет был больше последнего элемента массива и алгоритм сразу понял, что элемента в матрице нет
-3) Алгоритмы не показывают значительной разницы на разных данных. Думаю, дело в том, что бинарным поиском я всё равно просматриваю каждую строку, а для экспоненциального начинаю поиск сначала по строке
-4) Что график лестничного алгоритма, что график бинарного, показывают красивые графики, а экспоненциальный постоянно ломаются. Возможно, имеется ошибка в экспоненциальном алгоритме, но выявить её не удалось.
-5) Бинарный ожидаемо растёт также, как и количество строк.
-6) Лесенка показывает Небольшой рост, так как один из коэффицентов уже с 0 имеет одну из констант равной 2^13
+# Результаты и выводы.
+Все графики смотрите по ссылке на гугл диск, тут лишь основные - log сравнение трёх алгоритмов на первой матрице и log сравнение эксп. поиска на 1 и 2 матрице.
+https://docs.google.com/spreadsheets/d/178wBsA4Ej7er1Lw6KCcvod7N_EzcOONQ4hkRDZkI2FI/edit?usp=sharing
+### Алгоритмы на 1 матрице.
+<img width="432" alt="image" src="https://user-images.githubusercontent.com/99073996/209128355-0f401e48-9b3f-4406-b6ae-d90adc1fe656.png">
+<img width="418" alt="image" src="https://user-images.githubusercontent.com/99073996/209129233-735f1eda-6d9e-4ace-bf3f-75aedb6be15d.png">
+
+### Вывод по первому графику
+1) Лесенка ожидаемо оказалась быстрее на более "квадратных" матрицах. А бинарный и экспоненциальные поиски оказались быстрее на более узких матрицах.
+2) Бинарный поиск оказался неожиданно быстрее экспоненциального, так как в бинарном не было поиска по столбцу - организовывался полный перебор строк. Думаю, дело в том, что количество строк у обоих поисков всё равно было большим у обоих вариантов. Но бинарный оказался заметно быстрее при поиске в строке - таргеты должны были оказаться примерно во второй половине строк, до которых эксп. добирался не сразу.
+3) Неожиданно, бинарный и логарифмический поиски по времени растут почти одинаково, хотя у эксп. имеется оптимизация, сокращающая количество проверенных строк.
+
+### Экспоненциальный поиск на 1 и 2 матрицах.
+<img width="440" alt="image" src="https://user-images.githubusercontent.com/99073996/209128692-e43a7087-eaf7-488f-a4f8-2f690f5b2ab7.png">
+<img width="440" alt="image" src="https://user-images.githubusercontent.com/99073996/209129174-522cc8dd-3f7a-41dc-8d58-fa9f92d69990.png">
+
+### Выводы по второму графику
+1) Экспоненциальный поиск начал работать лучше на матрице с бОльшими числами и более быстрым ростом этих чисел. Думаю, дело в том, что таргет, в среднем, стал ожидаться ближе к первой половине строк. Это видно по формулам значений в ячейках и таргете. Таргет1 = 8*(string)+1 ;Таргет2 = 16*(string)+1; Ячейка1 =(((string)/bar*i+k)*2; Ячейка2 =(((string)/bar*i*k)*2; Значение таргета увеличилось в 8 раз, а щначение ячейки каждый раз увеличивается в k раз, где k - почти всегда больше 8.
+2) Рост обоих графиков всё равно похож на логарифмический (на log шкале графики похожи на прямые). То есть время растёт почти линейно по отношению к количеству строк.
 
