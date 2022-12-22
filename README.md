@@ -80,13 +80,14 @@ def find_lest(matrix,bar_n,string_n,num):
 Экспоненциальный поиск в массиве. Двинаем размеры диапазона согласно экспоненциальному. Как нашли диапазон, ищем в нём уже бинарным.
 ```python
 def exp_serch(arr,start,end,num,exp=1):
-    s_end=min(start+2**exp,end)
+    s_end=max(end-2**exp,start)
+    #print(end,s_end,len(arr),arr)
     if arr[s_end]==num:
         return [1,s_end]
-    elif arr[s_end]>num or s_end==end:
-        return bins(arr,start,s_end,num)
+    elif arr[s_end]<num or s_end==start:
+        return bins(arr,s_end,end,num)
     else:
-        return exp_serch(arr,s_end,end,num,exp+1)
+        return exp_serch(arr,start,s_end,num,exp+1)
 ```
 
 Начинаем поиск с поиска строки, выше которой точно находиться наше число. А далее идём вверх до конца матрицы, или же до строки, последнее число которой менше нашего элемента. Ну или пока не найдём наш элемент.
