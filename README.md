@@ -1,6 +1,6 @@
 # Лабораторная работа по алгоритмам и структурам данных №1. 
 ### Выполнил Носков Илья 21ПИ1.
-Все графики и таблицы, помимо скринов, будут доступны по ссылке https://docs.google.com/spreadsheets/d/1O7C6GYKZfmwLcnTAWSsHm-Yq3RG5AUnM2H3ZAyKF3UM/edit?usp=sharing
+Все графики и таблицы, помимо скринов, будут доступны по ссылке https://docs.google.com/spreadsheets/d/1kYcRv7BlsV4xKhjwWECqlUIWNOCdl0h3meINKqnm-dc/edit?usp=sharing
 Также один из файлов является копией этой таблицы.
 Код запускал в IDLE, python 3.7.8.
 # Коды алгоритмов.
@@ -15,21 +15,22 @@ def make_matrix_1(bar,string):
         matrix.append([])
     for i in range(bar):
         for k in range(string):
-            matrix[i].append((max_bar_len/string*i+k)*2)
-    return 2*(max_bar_len)+1,matrix
+            matrix[i].append((string/bar*i+k)*2)
+    return 2*(string)+1,matrix
 ```
 Генерация второй матрицы:
 A[i][k]=(N/M*i*k)*2;
 target=16*N+1.
 ```python
+# генерация матрицы 2
 def make_matrix_2(bar,string):
     matrix=[]
     for i in range(bar):
         matrix.append([])
     for i in range(bar):
         for k in range(string):
-            matrix[i].append(((max_bar_len)/string*i*k)*2)
-    return 16*(max_bar_len)+1,matrix
+            matrix[i].append(((string)/bar*i*k)*2)
+    return 16*(string)+1,matrix
 ```
 ### Бинарный поиск.
 #### Оценка времени работы - O(N*log(M))
@@ -109,43 +110,8 @@ def exp_matrix_s(matrix,bar,string,num):
 ```
 
 # Результаты.
-### Сравнение трёх алгоритмов на одинаковых данных.
-#### Первая матрица.
-##### Обычная шкала.
-<img width="413" alt="image" src="https://user-images.githubusercontent.com/99073996/208665888-d7717e7d-9c39-4900-88c4-6c69d1c98c19.png">
-
-##### Логарифмическая шкала.
-<img width="433" alt="image" src="https://user-images.githubusercontent.com/99073996/208665956-f299e8ca-ecd2-4d98-9028-4fae1572a750.png">
-
-#### Вторая матрица.
-##### Обычная шкала.
-<img width="433" alt="image" src="https://user-images.githubusercontent.com/99073996/208666759-0407e4d7-d471-4381-9dec-d0a0efe9f452.png">
-
-##### Логарифмическая шкала.
-<img width="447" alt="image" src="https://user-images.githubusercontent.com/99073996/208666815-f8336243-c186-4272-a307-d3e9a3ecfbd3.png">
-
-### Сравнение Алгоритмов на разных данных
-#### Бинарный поиск.
-##### Обычная шкала.
-<img width="439" alt="image" src="https://user-images.githubusercontent.com/99073996/208668663-24ac7b42-d41c-436c-a164-76bd3dc4288d.png">
-
-##### Логарифмическая шкала.
-<img width="440" alt="image" src="https://user-images.githubusercontent.com/99073996/208668704-3e85538e-a29d-4664-b18e-ecd81707c416.png">
-
-#### Лесенка.
-##### Обычная шкала.
-<img width="439" alt="image" src="https://user-images.githubusercontent.com/99073996/208668910-35f76e15-5d28-4caa-af0c-80847a8d30b0.png">
-
-##### Логарифмическая шкала.
-<img width="444" alt="image" src="https://user-images.githubusercontent.com/99073996/208668959-ae83dae2-3720-4a8f-a2a2-0cd0792793bb.png">
-
-
-#### Экспоненциальная лесенка.
-##### Обычная шкала.
-<img width="439" alt="image" src="https://user-images.githubusercontent.com/99073996/208669033-0db22c39-88dc-4666-a2f1-416a6ba822e5.png">
-
-##### Логарифмическая шкала.
-<img width="440" alt="image" src="https://user-images.githubusercontent.com/99073996/208669065-caa0c143-fcf0-4aa5-b797-3b34c527ae5d.png">
+Смотрите по ссылке на гугл диск
+https://docs.google.com/spreadsheets/d/1kYcRv7BlsV4xKhjwWECqlUIWNOCdl0h3meINKqnm-dc/edit?usp=sharing
 
 # Выводы
 1) Экспоненциальный поиск оказался самым быстрым, как и ожидалось по формулам. 
