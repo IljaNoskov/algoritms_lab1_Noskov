@@ -1,6 +1,6 @@
 # Лабораторная работа по алгоритмам и структурам данных №1. 
 ### Выполнил Носков Илья 21ПИ1.
-Все графики и таблицы, помимо скринов, будут доступны по ссылке [https://docs.google.com/spreadsheets/d/1kYcRv7BlsV4xKhjwWECqlUIWNOCdl0h3meINKqnm-dc/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1O7C6GYKZfmwLcnTAWSsHm-Yq3RG5AUnM2H3ZAyKF3UM/edit?usp=sharing)
+Все графики и таблицы, помимо скринов, будут доступны по ссылке  https://docs.google.com/spreadsheets/d/178wBsA4Ej7er1Lw6KCcvod7N_EzcOONQ4hkRDZkI2FI/edit?usp=sharing
 Также один из файлов является копией этой таблицы.
 Код запускал в IDLE, python 3.10.
 # Коды алгоритмов.
@@ -111,7 +111,7 @@ def exp_matrix_s(matrix,bar,string,num):
 
 # Результаты.
 Смотрите по ссылке на гугл диск
-[https://docs.google.com/spreadsheets/d/1kYcRv7BlsV4xKhjwWECqlUIWNOCdl0h3meINKqnm-dc/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1O7C6GYKZfmwLcnTAWSsHm-Yq3RG5AUnM2H3ZAyKF3UM/edit?usp=sharing)
+https://docs.google.com/spreadsheets/d/178wBsA4Ej7er1Lw6KCcvod7N_EzcOONQ4hkRDZkI2FI/edit?usp=sharing
 
 # Выводы
 1) Бинарный поиск ожидаемо самый медленный на квадратных данных, но самый быстрый на "узкой" матрице
