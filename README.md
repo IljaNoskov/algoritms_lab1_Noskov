@@ -107,8 +107,8 @@ def exp_s_matrix(matrix,bar_len,string_len,num):
 Все графики смотрите по ссылке на гугл диск, тут лишь основные - log сравнение трёх алгоритмов на первой матрице и log сравнение эксп. поиска на 1 и 2 матрице.
 https://docs.google.com/spreadsheets/d/178wBsA4Ej7er1Lw6KCcvod7N_EzcOONQ4hkRDZkI2FI/edit?usp=sharing
 ### Алгоритмы на 1 матрице.
-<img width="432" alt="image" src="https://user-images.githubusercontent.com/99073996/209128355-0f401e48-9b3f-4406-b6ae-d90adc1fe656.png">
-<img width="418" alt="image" src="https://user-images.githubusercontent.com/99073996/209129233-735f1eda-6d9e-4ace-bf3f-75aedb6be15d.png">
+<img width="438" alt="image" src="https://user-images.githubusercontent.com/99073996/209152701-9083006d-f69f-4356-86bf-1c56cdd1bbf4.png">
+<img width="416" alt="image" src="https://user-images.githubusercontent.com/99073996/209152762-95e3a0aa-59cd-4c3f-962e-bcfb3e5e32f8.png">
 
 ### Вывод по первому графику
 1) Лесенка ожидаемо оказалась быстрее на более "квадратных" матрицах. А бинарный и экспоненциальные поиски оказались быстрее на более узких матрицах.
@@ -116,8 +116,8 @@ https://docs.google.com/spreadsheets/d/178wBsA4Ej7er1Lw6KCcvod7N_EzcOONQ4hkRDZkI
 3) Неожиданно, бинарный и логарифмический поиски по времени растут почти одинаково, хотя у эксп. имеется оптимизация, сокращающая количество проверенных строк.
 
 ### Экспоненциальный поиск на 1 и 2 матрицах.
-<img width="440" alt="image" src="https://user-images.githubusercontent.com/99073996/209128692-e43a7087-eaf7-488f-a4f8-2f690f5b2ab7.png">
-<img width="440" alt="image" src="https://user-images.githubusercontent.com/99073996/209129174-522cc8dd-3f7a-41dc-8d58-fa9f92d69990.png">
+<img width="441" alt="image" src="https://user-images.githubusercontent.com/99073996/209152851-d7305df3-b032-4cec-8991-ec57dbcb59c2.png">
+<img width="445" alt="image" src="https://user-images.githubusercontent.com/99073996/209152908-d056f7c2-6da5-46af-8032-b57cc15e3797.png">
 
 ### Выводы по второму графику
 1) Экспоненциальный поиск начал работать лучше на матрице с бОльшими числами и более быстрым ростом этих чисел. Думаю, дело в том, что таргет, в среднем, стал ожидаться ближе к первой половине строк. Это видно по формулам значений в ячейках и таргете. Таргет1 = 8*(string)+1 ;Таргет2 = 16*(string)+1; Ячейка1 =(((string)/bar*i+k)*2; Ячейка2 =(((string)/bar*i*k)*2; Значение таргета увеличилось в 8 раз, а щначение ячейки каждый раз увеличивается в k раз, где k - почти всегда больше 8.
