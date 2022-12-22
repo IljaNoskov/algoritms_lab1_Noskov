@@ -16,7 +16,7 @@ def bins(arr,start,stop,n):
     #print(start,stop,mid, len(arr))
     if start>stop:
         return([-1,start])
-        print(mid)
+        #print(mid)
     if n==arr[mid]:
         return([1,mid])
     elif n<arr[mid]:
@@ -46,51 +46,25 @@ def find_lest(matrix,bar_n,string_n,num):
     return("Элемента в матрице нет")
 
 def exp_serch(arr,start,end,num,exp=1):
-    s_end=min(start+2**exp,end)
+    s_end=max(end-2**exp,start)
+    #print(end,s_end,len(arr),arr)
     if arr[s_end]==num:
         return [1,s_end]
-    elif arr[s_end]>num or s_end==end:
-        return bins(arr,start,s_end,num)
+    elif arr[s_end]<num or s_end==start:
+        return bins(arr,s_end,end,num)
     else:
-        return exp_serch(arr,s_end,end,num,exp+1)
-    
-def bins_bar(matrix,bar_ind,start,end,num):
-    mid=(start+end)//2
-    #print(mid)
-    if start>end:
-        return([-1,start])
-    if num==matrix[mid][bar_ind]:
-        return([1,mid])
-    elif num<matrix[mid][bar_ind]:
-        #print('ищу выше',num,matrix[mid][bar_ind])
-        return(bins_bar(matrix,bar_ind,start,mid-1,num))
-    else:
-        #print('ищу ниже')
-        return(bins_bar(matrix,bar_ind,mid+1,end,num))
-    
-def exp_search_bar(matrix,bar_ind,start,end,num,exp=0):
-    s_end=min(start+2**exp,end)
-    if matrix[s_end][bar_ind]==num:
-        return ([1,s_end])
-    if matrix[s_end][bar_ind]>num or s_end==end:
-        return bins_bar(matrix,bar_ind,start,s_end,num)
-    else:
-        return exp_search_bar(matrix,bar_ind,s_end,end,num,exp+1)
+        return exp_serch(arr,start,s_end,num,exp+1)
 
 def exp_s_matrix(matrix,bar_len,string_len,num):
-    rez=exp_search_bar(matrix,0,0,bar_len,num)
+    rez=exp_serch(matrix[0],0,string_len,num)
     #print(rez)
     if rez[0]==1:
         return 'Элемент найден',rez[1],0
-    for i in range(min(rez[1],bar_len),-1,-1):
-        #print(i)
-        if matrix[i][-1]<num:
-            #print(num,matrix[i][-1])
-            return -1
-        rez=exp_serch(matrix[i],0,string_len,num,)
-        #print(rez)
-        if rez[0]==1:
-            return 1,i,rez[1]
+    for i in range(1,bar_len):
+        #print (i,rez[1])
+        rez=exp_serch(matrix[i],0,rez[1]-1,num)
+        if rez[0]==1 or rez[1]==0:
+            return i,rez[1]
 
 
 # переменные в которых степень 2 и основание
@@ -117,6 +91,7 @@ def make_matrix_2(bar,string):
 # основной код. Порядок вывода - степень, время бинарным, лесенкой и эксп.
 print('start task 1')
 flag=0
+
 while step<13:
     if flag>=1:
         flag=0
